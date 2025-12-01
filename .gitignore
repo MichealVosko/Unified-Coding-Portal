@@ -1,0 +1,37 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+
+SOAP notes/
+.history/
+*.ipynb
+*.pdf
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+env/
+venv/
+
+# Data files
+data/*.pdf
+outputs/
+
+# System
+.DS_Store
+Thumbs.db
+.history/
+.env
+*.pdf
+*.ipynb
+*.xlsx

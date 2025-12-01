@@ -1,0 +1,14 @@
+pypdf
+pandas
+python-dotenv
+langchain
+langchain-core>=0.2.17
+langchain-community>=0.2.0
+langchain-google-genai>=1.0.1
+sentence-transformers
+openpyxl
+streamlit
+uvicorn
+numpy
+PyPDF2
+xlsxwriter
