@@ -2,10 +2,10 @@ def run():
     import streamlit as st
     import pandas as pd
     import io
-    from medical_wealth_ambition.utils.pdf_utils import load_pdf
-    from medical_wealth_ambition.utils.extract_utils import extract_session_info
+    from mental_wealth_ambition.utils.pdf_utils import load_pdf
+    from mental_wealth_ambition.utils.extract_utils import extract_session_info
 
-    st.title("Medical Wealth Ambition")
+    st.title("Mental Wealth Ambition")
 
     uploaded_files = st.file_uploader(
         "Upload one or more SOAP notes (PDFs)", type="pdf", accept_multiple_files=True
