@@ -88,7 +88,7 @@ def extract_session_info(text):
         "Patient": extract_patient(text),
         "DOB": extract_dob(text),
         "Service Code": service_code,
-        "Diagnosis": icds,
+        "Diagnosis": icds.split(",")[0],
         "Clinician": extract_clinician(text),
         "Coding": f"{service_code}--{modifier if modifier else ''}--{icds}",
         "Status": "On Hold",
