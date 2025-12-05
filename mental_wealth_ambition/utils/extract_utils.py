@@ -76,7 +76,9 @@ def extract_icds(text):
 
 def apply_pos(location):
     loc = location.strip().lower()
-    if "telehealth" in loc:
+    if "telehealth" in loc and "other" in loc:
+        return {"POS": 2, "MODIFIER": 95}
+    elif "telehealth" in loc:
         return {"POS": 10, "MODIFIER": 95}
     return {"POS": None, "MODIFIER": None}
 
@@ -98,10 +100,6 @@ def extract_session_info(text):
         "Clinician": extract_clinician(text),
         "Coding": f"{service_code}--{modifier if modifier else ''}--{icds}",
         "Status": "On Hold",
-        # "Supervisor": extract_supervisor(text),
-        # "Duration": extract_duration(text),
-        # "Location": location,
-        # "Participants": extract_participants(text),
         "POS": pos,
         "Modifier": modifier,
         "Comments": "",
