@@ -58,13 +58,6 @@ def extract_participants(text):
     match = re.search(pattern, text)
     return match.group(1).split("\n")[0].strip() if match else None
 
-
-def extract_diagnosis(text):
-    pattern = r"Diagnosis\s*[:\n]\s*([A-Z]\d{2}(?:\.\d+)?(?: [A-Za-z ,]+)?)"
-    match = re.search(pattern, text, re.MULTILINE)
-    return match.group(1).strip() if match else None
-
-
 def extract_icds(text):
     icd_pattern = r"\b[A-Z]\d{2}(?:\.\d+)?\b"
     icds = re.findall(icd_pattern, text)
@@ -89,8 +82,7 @@ def extract_session_info(text):
     pos, modifier = pos_info["POS"], pos_info["MODIFIER"]
 
     service_code = extract_service_code(text)
-    diagnosis = extract_diagnosis(text)
-    icds = extract_icds(diagnosis)
+    icds = extract_icds(text)
     return {
         "Date": extract_dos(text),
         "Patient": extract_patient(text),
