@@ -1,4 +1,7 @@
 import re
+import pypdfium2 as pdfium
+import pytesseract
+
 from datetime import datetime
 import pandas as pd
 import PyPDF2
@@ -8,9 +11,27 @@ def load_pdf(uploaded_file):
     text = ""
     for page in reader.pages:
         text += page.extract_text() + "\n"
+    
+    if text.strip() == "":
+        # Fallback to OCR
+        text = ocr_pdf(uploaded_file)
     return text
 
 
+def ocr_pdf(pdf_path, dpi=300, tesseract_cmd=None):
+    if tesseract_cmd:
+        pytesseract.pytesseract.tesseract_cmd = tesseract_cmd
+
+    pdf = pdfium.PdfDocument(pdf_path)
+    text_pages = []
+    scale = dpi / 72
+
+    for page in pdf:
+        bitmap = page.render(scale=scale)
+        img = bitmap.to_pil()
+        text_pages.append(pytesseract.image_to_string(img, config="--psm 6"))
+
+    return "\n".join(text_pages)
 
 def extract_icd10_from_assessment(text: str) -> list:
     """
@@ -96,6 +117,7 @@ def extract_patient_info(text: str) -> dict:
     payer_match = re.search(r"PAYER\s+([A-Za-z0-9& ]+)", text)
     if payer_match:
         data["Insurance"] = payer_match.group(1).strip()
+        data["Insurance"] = data["Insurance"].split("INSURED")[0].strip()
         
     data["ICD Codes"] = ", ".join(extract_icd10_from_assessment(text))
     
