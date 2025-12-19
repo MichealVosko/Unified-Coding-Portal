@@ -12,3 +12,4 @@ uvicorn
 numpy
 PyPDF2
 xlsxwriter
+pypdfium2
