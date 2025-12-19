@@ -68,6 +68,8 @@ def extract_icds(text):
 
 
 def apply_pos(location):
+    if not location:
+        return {"POS": None, "MODIFIER": None}
     loc = location.strip().lower()
     if "telehealth" in loc and "other" in loc:
         return {"POS": 2, "MODIFIER": 95}
@@ -77,7 +79,7 @@ def apply_pos(location):
 
 
 def extract_session_info(text):
-    location = extract_location(text)
+    location = extract_location(text) or ""
     pos_info = apply_pos(location)
     pos, modifier = pos_info["POS"], pos_info["MODIFIER"]
 
