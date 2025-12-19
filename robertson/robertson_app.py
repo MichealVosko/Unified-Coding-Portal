@@ -47,15 +47,26 @@ def run():
             def process_file_wrapper(uploaded_file):
                 return process_file(uploaded_file, cpt_icd_mapping_df)
 
-            # Parallel processing
-            with ThreadPoolExecutor(max_workers=8) as executor:
+            # Parallel processing (limit workers to avoid resource spikes)
+            max_workers = min(4, total_files)
+            with ThreadPoolExecutor(max_workers=max_workers) as executor:
                 futures = {
-                    executor.submit(process_file_wrapper, f): f.name for f in uploaded_files
+                    executor.submit(process_file_wrapper, f): f.name
+                    for f in uploaded_files
                 }
                 completed = 0
                 for future in as_completed(futures):
-                    results.append(future.result())
                     completed += 1
+                    try:
+                        # give each task an upper-bound timeout to avoid hanging
+                        res = future.result(timeout=300)
+                    except Exception as e:
+                        # Record the error as a result row so the app doesn't crash
+                        err_row = {h: "" for h in HEADERS}
+                        err_row["Comments"] = f"Error processing file: {e}"
+                        res = err_row
+
+                    results.append(res)
                     progress_bar.progress(completed / total_files)
                     status_text.text(f"Processed {completed} of {total_files} files.")
 
