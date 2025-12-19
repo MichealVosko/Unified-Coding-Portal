@@ -12,4 +12,8 @@ uvicorn
 numpy
 PyPDF2
 xlsxwriter
+<<<<<<< HEAD
 pypdfium2
+=======
+pypdfium2
+>>>>>>> feature/cognitive-pdf-ocr-fallback
