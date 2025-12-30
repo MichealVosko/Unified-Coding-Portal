@@ -80,13 +80,12 @@ def extract_section(text: str, start: str, end: str) -> str:
     m = pattern.search(text)
     return m.group(1) if m else ""
 
-
 def has_dates(text: str) -> bool:
     date_pattern = r"\b(?:\d{1,2}/\d{1,2}/\d{2,4})\b"
     return bool(re.search(date_pattern, text))
 
-
 def is_existing_patient(text: str) -> bool:
+    text = clean_text(text)
     pattern = r"\bRETURN (?:FROM|FORM) INTAKE\b"
     if re.search(pattern, text, re.IGNORECASE):
         return True
@@ -94,8 +93,48 @@ def is_existing_patient(text: str) -> bool:
     block = extract_section(text, "Social History", "Objective")
     if not block:
         return False
-
     return has_dates(block)
+
+
+def extract_time_spent(text: str):
+    """
+    Detects if 'total time spent' is present (case-insensitive)
+    and extracts time spent in minutes (integer).
+
+    Returns:
+        (bool, int or None)
+    """
+    if not isinstance(text, str):
+        return False, None
+
+    # Normalize
+    t = text.lower()
+
+    # Check phrase exists
+    if "total time spent" not in t:
+        return False, None
+
+    # Regex to capture patterns like "15 minutes", "5 min", "30 mins"
+    match = re.search(r"(\d+)\s*min(ute)?s?", t, flags=re.IGNORECASE)
+    if match:
+        minutes = int(match.group(1))
+        return True, minutes
+
+    return True, None
+
+def clean_text(text: str) -> str:
+    lines = []
+    for line in text.splitlines():
+        # skip URLs
+        if line.startswith("http"):
+            continue
+        # skip encounter headers / timestamps
+        if re.match(r"\d{1,2}/\d{1,2}/\d{2,4},?\s+\d{1,2}:\d{2}", line):
+            continue
+        lines.append(line)
+    return "\n".join(lines)
+
+
 def extract_patient_info(text: str) -> dict:
     data = {}
 
@@ -149,8 +188,11 @@ def extract_patient_info(text: str) -> dict:
     else:    
         data["CPT Codes"].append("99205-GT")
 
-    data["CPT Codes"].append("90833-GT")
-    data["CPT Codes"] = ", ".join(data["CPT Codes"])
+    if extract_time_spent(text)[0]:
+        data["CPT Codes"].append("90833-GT")
+        data["CPT Codes"] = ", ".join(data["CPT Codes"])
+    else:
+        data["Comments"] = "Time spent not documented; please verify."
     
     return data
 
