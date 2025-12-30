@@ -75,6 +75,12 @@ def run():
 
         # Display results
         results_df = st.session_state.results_df
+        if "Date" in results_df.columns:
+            results_df["Date"] = pd.to_datetime(
+                results_df["Date"].astype(str), dayfirst=True, errors="coerce"
+            ).dt.strftime("%m/%d/%y")
+            results_df = results_df.sort_values(by="Date", ascending=True)
+
         st.subheader("Results Summary")
         st.dataframe(results_df, use_container_width=True)
 
@@ -99,9 +105,12 @@ def run():
             st.session_state.pop("last_files", None)
 
             # Delete uploaded PDF files
-            for f in os.listdir("data"):
+            data_path = "data"
+            os.makedirs(data_path, exist_ok=True)
+
+            for f in os.listdir(data_path):
                 if f.endswith(".pdf"):
                     try:
-                        os.remove(os.path.join("data", f))
+                        os.remove(os.path.join(data_path, f))
                     except Exception:
                         pass

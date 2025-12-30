@@ -39,6 +39,7 @@ def run():
         st.subheader("Results Summary")
         df = pd.DataFrame(st.session_state.patient_data)
         df.insert(0, "Facility Name", "Cognitive Works")
+        df = df.sort_values(by="DOS", ascending=True)
         st.dataframe(df, width="stretch")
 
         buffer = io.BytesIO()

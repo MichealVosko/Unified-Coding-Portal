@@ -33,6 +33,9 @@ def run():
     if st.session_state.patient_data:
         st.subheader("Results Summary")
         df = pd.DataFrame(st.session_state.patient_data)
+        df["Date"] = pd.to_datetime(df["Date"], format="%m/%d/%Y")
+        df = df.sort_values(by="Date", ascending=False)
+        df["Date"] = df["Date"].dt.strftime("%m/%d/%y")
         st.dataframe(df, width="stretch")
 
         buffer = io.BytesIO()
