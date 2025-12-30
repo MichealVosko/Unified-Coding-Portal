@@ -70,10 +70,32 @@ def extract_icd10_from_assessment(text: str) -> list:
 
     return codes
 
+# def is_existing_patient(text: str) -> bool:
+#     pattern = r"\bRETURN (?:FROM|FORM) INTAKE\b"
+#     return bool(re.search(pattern, text, re.IGNORECASE))
+
+
+def extract_section(text: str, start: str, end: str) -> str:
+    pattern = re.compile(f"{start}(.*?){end}", re.IGNORECASE | re.DOTALL)
+    m = pattern.search(text)
+    return m.group(1) if m else ""
+
+
+def has_dates(text: str) -> bool:
+    date_pattern = r"\b(?:\d{1,2}/\d{1,2}/\d{2,4})\b"
+    return bool(re.search(date_pattern, text))
+
+
 def is_existing_patient(text: str) -> bool:
     pattern = r"\bRETURN (?:FROM|FORM) INTAKE\b"
-    return bool(re.search(pattern, text, re.IGNORECASE))
+    if re.search(pattern, text, re.IGNORECASE):
+        return True
 
+    block = extract_section(text, "Social History", "Objective")
+    if not block:
+        return False
+
+    return has_dates(block)
 def extract_patient_info(text: str) -> dict:
     data = {}
 

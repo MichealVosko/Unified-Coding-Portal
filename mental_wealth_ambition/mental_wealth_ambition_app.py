@@ -41,7 +41,7 @@ def run():
 
         filename = st.text_input(
             "Enter filename for Excel download:",
-            value="medical_wealth_ambition_results.xlsx",
+            value="mental_wealth_ambition_results.xlsx",
         )
         if not filename.lower().endswith(".xlsx"):
             filename += ".xlsx"
