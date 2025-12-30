@@ -190,9 +190,9 @@ def extract_patient_info(text: str) -> dict:
 
     if extract_time_spent(text)[0]:
         data["CPT Codes"].append("90833-GT")
-        data["CPT Codes"] = ", ".join(data["CPT Codes"])
     else:
         data["Comments"] = "Time spent not documented; please verify."
+    data["CPT Codes"] = ", ".join(data["CPT Codes"])
     
     return data
 
