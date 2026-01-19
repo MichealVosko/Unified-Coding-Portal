@@ -75,7 +75,7 @@ def process_file(uploaded_file, cpt_icd_mapping_df):
         # Duration & CPT units
         duration_str = phi_data.get("Duration")
         cpt_with_units = calculate_cpt_units(predicted_cpts, duration_str)
-
+        cpt_with_units = list(dict.fromkeys(cpt_with_units))
         # CPT descriptions safely
         service_descriptions = []
         if service_code:
@@ -93,9 +93,9 @@ def process_file(uploaded_file, cpt_icd_mapping_df):
         
         if service_code == "90791":
             ok, issue = check_biopsychosocial(clean)
-        if not ok:
-            note = f"Section 'Biopsychosocial Assessment' {issue}."
-            comments_str = f"{comments_str} | {note}" if comments_str else note
+            if not ok:
+                note = f"Section 'Biopsychosocial Assessment' {issue}."
+                comments_str = f"{comments_str} | {note}" if comments_str else note
 
     # Build row dictionary
     row = {
