@@ -112,7 +112,7 @@ def process_file(uploaded_file, cpt_icd_mapping_df):
         "POS": phi_data.get("POS", ""),
         "Modifier": phi_data.get("Modifier", ""),
         "Coding": row_coding,
-        "Note Status": "Pending",
+        "Note Status": "Finalized",
         "Status": "On Hold",
         "Comments": comments_str,
     }
