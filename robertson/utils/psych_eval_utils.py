@@ -46,7 +46,7 @@ def contains_psychometrist(note_text: str) -> bool:
 def calculate_code_units(code, time):
     def custom_round(value: float) -> int:
         fractional = value - math.floor(value)
-        return math.ceil(value) if fractional > 0.5 else math.floor(value)
+        return math.ceil(value) if fractional >= 0.5 else math.floor(value)
 
     if code == "96139":
         return custom_round(time / 30)
