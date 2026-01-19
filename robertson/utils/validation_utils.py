@@ -36,3 +36,20 @@ def check_note(note_text: str, filename: str):
         "status": "RED" if missing else "OK",
         "missing_sections": missing,
     }
+
+
+def check_biopsychosocial(note_text: str, min_words: int = 200) -> tuple[bool, str]:
+    section_regex = r"\bBiopsychosocial\s+Assessment\b" 
+    match = re.search(
+        section_regex + r"(.*?)(?:\n(?:Plan|Assessment|Additional Notes)|$)",
+        note_text,
+        re.IGNORECASE | re.DOTALL,
+    )
+    if not match:
+        return False, "missing"
+    content = match.group(1).strip()
+    word_count = len(content.split())
+    if word_count < min_words:
+        return False, "too short"
+    return True, ""
+    
