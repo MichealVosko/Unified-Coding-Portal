@@ -1,0 +1,364 @@
+{
+    "Office and Patient Visits": {
+        "Preventive Visits": [
+            {
+                "CPT": "99381",
+                "Description": "Preventive care visit, new patient, age less than 1 year"
+            },
+            {
+                "CPT": "99382",
+                "Description": "Preventive care visit, new patient, age 1–4 years"
+            },
+            {
+                "CPT": "99383",
+                "Description": "Preventive care visit, new patient, age 5–11 years"
+            },
+            {
+                "CPT": "99384",
+                "Description": "Preventive care visit, new patient, age 12–17 years"
+            },
+            {
+                "CPT": "99385",
+                "Description": "Preventive care visit, new patient, age 18–39 years"
+            },
+            {
+                "CPT": "99391",
+                "Description": "Preventive care visit, established patient, age less than 1 year"
+            },
+            {
+                "CPT": "99392",
+                "Description": "Preventive care visit, established patient, age 1–4 years"
+            },
+            {
+                "CPT": "99393",
+                "Description": "Preventive care visit, established patient, age 5–11 years"
+            },
+            {
+                "CPT": "99394",
+                "Description": "Preventive care visit, established patient, age 12–17 years"
+            },
+            {
+                "CPT": "99395",
+                "Description": "Preventive care visit, established patient, age 18–39 years"
+            },
+            {
+                "CPT": "99429",
+                "Description": "Unlisted preventive service"
+            }
+        ]
+    },
+    "Procedures": {
+        "Minor Procedures and Treatments": [
+            {
+                "CPT": "15851",
+                "Description": "Removal of sutures"
+            },
+            {
+                "CPT": "17250",
+                "Description": "Chemical cauterization of tissue"
+            },
+            {
+                "CPT": "69210",
+                "Description": "Ear irrigation for wax or debris removal"
+            },
+            {
+                "CPT": "96372",
+                "Description": "Therapeutic or diagnostic injection, subcutaneous or intramuscular"
+            },
+            {
+                "CPT": "94640",
+                "Description": "Nebulizer or inhalation treatment"
+            },
+            {
+                "CPT": "97169",
+                "Description": "Low complexity athletic training evaluation"
+            }
+        ]
+    },
+    "Laboratory and Diagnostic Tests": {
+        "Urine Testing": [
+            {
+                "CPT": "81002",
+                "Description": "Urinalysis without microscopy"
+            },
+            {
+                "CPT": "81003",
+                "Description": "Automated urinalysis without microscopy"
+            },
+            {
+                "CPT": "81025",
+                "Description": "Urine pregnancy test"
+            }
+        ],
+        "Infectious Disease Testing": [
+            {
+                "CPT": "87428",
+                "Description": "Rapid test for SARS-CoV and influenza A and B"
+            },
+            {
+                "CPT": "87804",
+                "Description": "Rapid influenza antigen test"
+            },
+            {
+                "CPT": "87807",
+                "Description": "Rapid respiratory syncytial virus test"
+            },
+            {
+                "CPT": "87880",
+                "Description": "Rapid streptococcus group A test"
+            }
+        ],
+        "Screening and Assessments": [
+            {
+                "CPT": "86580",
+                "Description": "Tuberculosis intradermal skin test"
+            },
+            {
+                "CPT": "96110",
+                "Description": "Limited developmental screening"
+            },
+            {
+                "CPT": "96160",
+                "Description": "Patient health risk assessment"
+            },
+            {
+                "CPT": "G9902",
+                "Description": "Tobacco use screening, patient identified as user"
+            },
+            {
+                "CPT": "G9903",
+                "Description": "Tobacco use screening, patient identified as non-user"
+            }
+        ]
+    },
+    "Vaccines and Immunizations": {
+        "Vaccine Administration": [
+            {
+                "CPT": "90460",
+                "Description": "Initial vaccine administration"
+            },
+            {
+                "CPT": "90461",
+                "Description": "Additional vaccine administration"
+            },
+            {
+                "CPT": "90471",
+                "Description": "Immunization administration, first vaccine"
+            },
+            {
+                "CPT": "90472",
+                "Description": "Immunization administration, each additional vaccine"
+            }
+        ],
+        "Influenza Vaccines": [
+            {
+                "CPT": "90655",
+                "Description": "Influenza vaccine, preservative free, 6–35 months"
+            },
+            {
+                "CPT": "90656",
+                "Description": "Influenza vaccine, preservative free, age 3 and older"
+            },
+            {
+                "CPT": "90657",
+                "Description": "Influenza vaccine, 6–35 months"
+            },
+            {
+                "CPT": "90658",
+                "Description": "Standard influenza vaccine"
+            },
+            {
+                "CPT": "90660",
+                "Description": "Influenza nasal spray vaccine"
+            },
+            {
+                "CPT": "90672",
+                "Description": "Quadrivalent influenza nasal vaccine"
+            },
+            {
+                "CPT": "90674",
+                "Description": "Quadrivalent influenza vaccine, preservative free"
+            },
+            {
+                "CPT": "90685",
+                "Description": "Quadrivalent influenza vaccine, 6–35 months"
+            },
+            {
+                "CPT": "90686",
+                "Description": "Quadrivalent influenza vaccine, age 3 and older"
+            }
+        ],
+        "Respiratory and Pneumococcal Vaccines": [
+            {
+                "CPT": "90380",
+                "Description": "RSV monoclonal antibody injection"
+            },
+            {
+                "CPT": "90670",
+                "Description": "Pneumococcal conjugate vaccine, PCV13"
+            },
+            {
+                "CPT": "90671",
+                "Description": "Pneumococcal conjugate vaccine, PCV15"
+            },
+            {
+                "CPT": "90677",
+                "Description": "Pneumococcal conjugate vaccine, PCV20"
+            }
+        ],
+        "Routine Childhood and Adolescent Vaccines": [
+            {
+                "CPT": "90619",
+                "Description": "Meningococcal ACWY vaccine"
+            },
+            {
+                "CPT": "90620",
+                "Description": "Meningococcal B vaccine (Bexsero)"
+            },
+            {
+                "CPT": "90621",
+                "Description": "Meningococcal B vaccine"
+            },
+            {
+                "CPT": "90633",
+                "Description": "Hepatitis A pediatric vaccine"
+            },
+            {
+                "CPT": "90647",
+                "Description": "Haemophilus influenzae type B vaccine, PRP-OMP"
+            },
+            {
+                "CPT": "90648",
+                "Description": "Haemophilus influenzae type B vaccine, PRP-T"
+            },
+            {
+                "CPT": "90649",
+                "Description": "Human papillomavirus vaccine, 9-valent"
+            },
+            {
+                "CPT": "90651",
+                "Description": "Human papillomavirus vaccine, 9-valent"
+            },
+            {
+                "CPT": "90680",
+                "Description": "Rotavirus vaccine"
+            },
+            {
+                "CPT": "90681",
+                "Description": "Rotavirus oral vaccine, 2-dose"
+            },
+            {
+                "CPT": "90696",
+                "Description": "DTaP-IPV vaccine"
+            },
+            {
+                "CPT": "90697",
+                "Description": "DTaP-IPV-Hib-HepB combination vaccine"
+            },
+            {
+                "CPT": "90698",
+                "Description": "DTaP-Hib-IPV vaccine"
+            },
+            {
+                "CPT": "90700",
+                "Description": "DTaP vaccine"
+            },
+            {
+                "CPT": "90707",
+                "Description": "Measles, mumps, rubella vaccine"
+            },
+            {
+                "CPT": "90710",
+                "Description": "MMR and varicella combination vaccine"
+            },
+            {
+                "CPT": "90713",
+                "Description": "Inactivated polio vaccine"
+            },
+            {
+                "CPT": "90715",
+                "Description": "Tdap vaccine"
+            },
+            {
+                "CPT": "90716",
+                "Description": "Varicella vaccine"
+            },
+            {
+                "CPT": "90734",
+                "Description": "Meningococcal vaccine"
+            },
+            {
+                "CPT": "90744",
+                "Description": "Hepatitis B pediatric or adolescent vaccine"
+            },
+            {
+                "CPT": "90746",
+                "Description": "Hepatitis B adult vaccine"
+            }
+        ]
+    },
+    "Nutrition and Counseling": {
+        "Nutrition Therapy": [
+            {
+                "CPT": "97802",
+                "Description": "Medical nutrition therapy, initial individual session"
+            },
+            {
+                "CPT": "97803",
+                "Description": "Medical nutrition therapy, follow-up individual session"
+            },
+            {
+                "CPT": "97804",
+                "Description": "Medical nutrition therapy, group session"
+            }
+        ]
+    },
+    "Medications and Injectable Drugs": {
+        "Injectable and Oral Medications": [
+            {
+                "CPT": "J0696",
+                "Description": "Ceftriaxone injection, 1 gram"
+            },
+            {
+                "CPT": "J1100",
+                "Description": "Dexamethasone injection, 1 milligram"
+            },
+            {
+                "CPT": "J2550",
+                "Description": "Promethazine injection, 25 milligrams"
+            },
+            {
+                "CPT": "J7510",
+                "Description": "Oral prednisone, 5 milligrams"
+            }
+        ]
+    },
+    "Administrative and Billing": {
+        "Fees and Reporting": [
+            {
+                "CPT": "99051",
+                "Description": "After-hours medical service"
+            },
+            {
+                "CPT": "Cards",
+                "Description": "Card payment processing fee"
+            },
+            {
+                "CPT": "G8417",
+                "Description": "Body mass index documented as 30 or greater"
+            },
+            {
+                "CPT": "G8431",
+                "Description": "Depression screening documented"
+            },
+            {
+                "CPT": "G8711",
+                "Description": "Antibiotic prescribed"
+            },
+            {
+                "CPT": "G8712",
+                "Description": "Antibiotic not prescribed"
+            }
+        ]
+    }
+}
