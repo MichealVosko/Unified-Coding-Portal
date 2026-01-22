@@ -1,6 +1,6 @@
 from robertson.utils.pdf_utils import load_pdf, deidentify_and_strip
 from robertson.utils.cpt_utils import predict_cpt_code, calculate_cpt_units
-from robertson.utils.validation_utils import check_note, check_biopsychosocial
+from robertson.utils.validation_utils import check_note, check_biopsychosocial, check_mental_status_assessed
 from robertson.utils.phi_utils import get_phi
 from robertson.utils.psych_eval_utils import extract_psych_eval_data
 from robertson.utils.cpt_utils import sort_diagnosis_codes
@@ -61,6 +61,10 @@ def process_file(uploaded_file, cpt_icd_mapping_df):
             if validation_result["missing_sections"]
             else ""
         )
+        
+        if not check_mental_status_assessed(clean):
+            note = "Current Mental Status not assessed."
+            comments_str = f"{comments_str} | {note}" if comments_str else note
 
         clinician_name = phi_data.get("Clinician", "") or ""
         medicaid_clinicians = ["Kayla", "Kaeli", "Virginia", "Courtney"]

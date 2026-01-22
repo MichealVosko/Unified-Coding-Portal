@@ -52,4 +52,17 @@ def check_biopsychosocial(note_text: str, min_words: int = 200) -> tuple[bool, s
     if word_count < min_words:
         return False, "too short"
     return True, ""
-    
+
+
+def check_mental_status_assessed(note_text: str) -> bool:
+    match = re.search(
+        r"Current Mental Status\s*\n((?:.*\n){1,20})",
+        note_text,
+    )
+    if match:
+        cms_section = match.group(1)
+        if "Not Assessed" in cms_section:
+            return False
+        else:
+            return True
+    return False
