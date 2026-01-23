@@ -14,3 +14,4 @@ PyPDF2
 xlsxwriter
 pypdfium2
 altair>=4.2.0,<5
+imghdr
